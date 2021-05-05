@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class barra : MonoBehaviour
 {
+    public float velocidad = 18f;
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Start");
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Update");
+        float tecladoh = Input.GetAxisRaw("Horizontal");
+        float positionx = transform.position.x + (tecladoh * velocidad * Time.deltaTime);
+        transform.position = new Vector3(Mathf.Clamp(positionx, -5, 5), transform.position.y, transform.position.z);
+
     }
 }
